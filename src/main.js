@@ -7,9 +7,16 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
+import * as VueGoogleMaps from 'vue2-google-maps'
 import { store } from './store/store'
 
 Vue.use(Vuetify)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyAf7P8JmhPkHiJhf0PBd1HlpV5n7uVdsFo',
+    libraries: 'places'
+  }
+})
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
