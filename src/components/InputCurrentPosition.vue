@@ -1,9 +1,12 @@
 <template>
   <div class='InputCurrentPosition'>
     <v-layout row wrap>
-      <v-form ref='form' v-on:submit.prevent='addpos()'>
-        <v-btn v-on:click.prevent='addpos()' color='success' dark>Submit</v-btn>
-      </v-form>
+      <v-flex xs6>
+        <v-form ref='form' v-on:submit.prevent='addpos(title)'>
+          <v-text-field v-model='title' placeholder='input title'></v-text-field>
+          <v-btn v-on:click.prevent='addpos(title)' color='success' dark>Submit</v-btn>
+        </v-form>
+      </v-flex>
     </v-layout>
   </div>
 </template>
@@ -13,10 +16,11 @@ export default {
   name: 'InputCurrentPosition',
   data () {
     return {
+      title: ''
     }
   },
   methods: {
-    addpos: function () {
+    addpos: function (msg) {
       new Promise((resolve, reject) => {
         if (window.navigator.geolocation) {
           window.navigator.geolocation.getCurrentPosition(
@@ -25,6 +29,7 @@ export default {
             },
             () => {
               alert('データの取得中にエラーが発生しました。')
+              this.title = ''
             },
             {
               enableHighAccuracy: true,
@@ -34,14 +39,17 @@ export default {
           )
         } else {
           reject(new Error('error'))
+          this.title = ''
         }
       }).then((response) => {
         const { latitude, longitude } = response.coords
-        let pos = {lat: latitude, lng: longitude}
+        let pos = {position: {lat: parseFloat(latitude), lng: parseFloat(longitude)}, title: msg}
         // Dispatcher
         this.$store.dispatch('TaskAdded', pos)
+        this.title = ''
       }).catch(() => {
         alert('データが取得できませんでした。電波の届きやすい場所で再度お試しください')
+        this.title = ''
       })
     }
   }

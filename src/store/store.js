@@ -6,25 +6,13 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     // 状態を定義
-    tasks: [
-      {
-        name: 'No1',
-        flag: false
-      },
-      {
-        name: 'No2',
-        flag: true
-      },
-      {
-        name: 'No3',
-        flag: false
-      }
+    marker_items: [
     ]
   },
   mutations: {
     TaskFinished: (state, payload) => {
-      state.tasks.forEach(value => {
-        if (value.name === payload) {
+      state.marker_items.forEach(value => {
+        if (value.data.title === payload) {
           if (value.flag === true) {
             value.flag = false
           } else if (value.flag === false) {
@@ -33,10 +21,10 @@ export const store = new Vuex.Store({
         }
       })
     },
-    TaskAdded: (state, payload) => {
-      console.log(payload)
-      state.tasks.push({
-        name: payload,
+    TaskAdded: (state, payload, msg) => {
+      console.log(payload.title)
+      state.marker_items.push({
+        data: payload,
         flag: false
       })
     }

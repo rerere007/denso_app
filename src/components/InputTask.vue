@@ -1,7 +1,7 @@
 <template>
   <div class='InputTask'>
     <v-layout row wrap>
-      <v-flex xs6>
+      <v-flex xs12>
         <v-form ref='form' v-on:submit.prevent='addtask(taskname)'>
           <v-text-field v-model='taskname' placeholder='input the task'></v-text-field>
           <v-btn v-on:click.prevent='addtask(taskname)' color='success' dark>Submit</v-btn>
