@@ -26,7 +26,9 @@ npm test
 
 # simple run server 
 sh init.sh
+```
 
+## Information
 # access URL
 https://192.168.33.10:3000
 
@@ -34,7 +36,6 @@ https://192.168.33.10:3000
 - https://teunohooijer.com/tag/vue2-google-maps/
 - https://salary.katsulabo.com/vue2-google-maps/#topimage
 - https://www.npmjs.com/package/vue2-google-maps
-
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
