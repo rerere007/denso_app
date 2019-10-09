@@ -28,7 +28,8 @@ npm test
 sh init.sh
 ```
 
-``` Information
+## Information
+``` browser
 # access URL
 https://192.168.33.10:3000
 
